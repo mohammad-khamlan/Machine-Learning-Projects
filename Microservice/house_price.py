@@ -8,6 +8,11 @@ app = Flask(__name__)
 
 
 def loaded_model():
+    """
+    loaded the model using path passed in the console
+    :param: none
+    :return: the model loaded from pickle file
+    """
     #Loaded model by pickle packege
     with open(str(foo), 'rb') as f:
         model = pickle.load(f)
@@ -17,7 +22,11 @@ def loaded_model():
 
 @app.route('/', methods=['GET', 'POST'])
 def predict():
-    features = []
+    """
+    predict the house price by using the model
+    :param: none
+    :return: house price prediction
+    """
     if request.method == 'POST':
         #get features from json request
         req_json = request.json
