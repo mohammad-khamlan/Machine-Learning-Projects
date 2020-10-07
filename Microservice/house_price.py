@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import csv
 import pickle
-import numpy
+import numpy as np
 from argparse import ArgumentParser
 
 app = Flask(__name__)
@@ -22,6 +22,7 @@ def loaded_model():
 
 @app.route('/', methods=['GET', 'POST'])
 def predict():
+    features = []
     """
     predict the house price by using the model
     :param: none
