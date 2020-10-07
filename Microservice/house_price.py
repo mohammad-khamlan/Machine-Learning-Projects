@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import csv
 import pickle
-import numpy as np
+import numpy
 from argparse import ArgumentParser
 
 app = Flask(__name__)
