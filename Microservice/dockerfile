@@ -1,5 +1,5 @@
 FROM python:3
-WORKDIR /home/mohammad/Desktop/ML/Microservice
+WORKDIR /home/noha/Desktop/ML/Microservice
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
