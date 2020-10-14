@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import csv
 import pickle
 import numpy as np
 from argparse import ArgumentParser
@@ -14,7 +13,7 @@ def loaded_model():
     :return: the model loaded from pickle file
     """
     #Loaded model by pickle packege
-    with open(str(foo), 'rb') as f:
+    with open(str(path), 'rb') as f:
         model = pickle.load(f)
     return model
 
@@ -27,12 +26,20 @@ def predict():
     :param: none
     :return: house price prediction
     """
+
     features = []
+
     if request.method == 'POST':
         #get features from json request
         req_json = request.json
-        for i in range(6):
-            features.append(req_json['feature'])
+        
+        features.append(req_json['feature1'])
+        features.append(req_json['feature2'])
+        features.append(req_json['feature3'])
+        features.append(req_json['feature4'])
+        features.append(req_json['feature5'])
+        features.append(req_json['feature6'])
+        
         #reshape the 1d array to 2d array to pass it to the model
         features = np.asarray(features, dtype=float).reshape(1,6)
         result = str(model.predict(features))
@@ -42,7 +49,14 @@ def predict():
         
     else:
         #get features from get url
-        features = request.args.getlist("feature")
+        
+        features = request.args.get("feature1")
+        features = request.args.get("feature2")
+        features = request.args.get("feature3")
+        features = request.args.get("feature4")
+        features = request.args.get("feature5")
+        features = request.args.get("feature6")
+        
         #reshape the 1d array to 2d array to pass it to the model
         features = np.asarray(features, dtype=float).reshape(1,6)
         result = model.predict(features)
@@ -53,9 +67,9 @@ def predict():
 if __name__ == '__main__':
     #Pass argument (path) from terminal
     parser = ArgumentParser()
-    parser.add_argument('-a')
+    parser.add_argument('-p')
     args = parser.parse_args()
-    foo = args.a
+    path = args.p
     #Loaded model
     model = loaded_model() 
     #Run flask application
