@@ -33,4 +33,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: docker_push
         run: |
-          docker push ${{secrets.DOCKER_USERNAME}}/Microservice:latest
+          docker push ${{secrets.DOCKER_USERNAME}}/microservice:latest
