@@ -15,3 +15,9 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "microservice-heroku" 
           heroku_email: "mohammad.khamlan@stu.najah.edu"
+      - name: Add remote origin
+        run: |
+           git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ heroku_app_name }}.git
+      - name: Deploy to Heroku
+        run: |
+           git push heroku HEAD:master -f
