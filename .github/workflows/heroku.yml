@@ -20,4 +20,4 @@ jobs:
            git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/microservice-heroku.git
       - name: Deploy to Heroku
         run: |
-           git push heroku HEAD:master -f
+           git push heroku
