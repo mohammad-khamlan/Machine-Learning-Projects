@@ -15,11 +15,9 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}  
           heroku_app_name: "microservice-heroku" 
           heroku_email: "mohammad.khamlan@stu.najah.edu"
-        env: 
-         run: heroku container:login 
+      - name: heroku login
+        run: heroku container:login 
       - name: Build and push
-        env:
-         run: heroku container:push -a microservice-heroku web 
+        run: heroku container:push -a microservice-heroku web 
       - name: Release
-        env:
-         run: heroku container:release -a microservice-heroku web   
+        run: heroku container:release -a microservice-heroku web   
