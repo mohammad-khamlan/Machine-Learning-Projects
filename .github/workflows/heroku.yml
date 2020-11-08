@@ -2,8 +2,9 @@ name: Deploy-heroku
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -12,12 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
         with:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}  
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}  
           heroku_app_name: "microservice-heroku" 
           heroku_email: "mohammad.khamlan@stu.najah.edu"
-      - name: heroku login
-        run: heroku container:login 
-      - name: Build and push
-        run: heroku container:push -a microservice-heroku web 
-      - name: Release
-        run: heroku container:release -a microservice-heroku web   
+          usedocker: 1
+          dontuseforce: 1
