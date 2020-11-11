@@ -1,11 +1,11 @@
 FROM python:3.8.1
 
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . /app
+WORKDIR /Machine-Learning-Projects/Microservice
+COPY . /Machine-Learning-Projects/Microservice
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+EXPOSE 5000/tcp
+EXPOSE 5000/udp
 
 CMD ["python3", "Machine-Learning-Projects/Microservice/house_price.py","-p","Machine-Learning-Projects/Microservice/model.pickle"]
