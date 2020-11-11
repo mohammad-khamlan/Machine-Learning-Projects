@@ -41,6 +41,4 @@ jobs:
           heroku_app_name: "microservice-heroku" #Must be unique in Heroku
           heroku_email: "mohammad.khamlan@stu.najah.edu"
           appdir: "./Microservice"  
-          usedocker: 1
-          dontuseforce: 1
-
+          usedocker: true
