@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:3.8.1
 
 ENV APP_HOME /app
 WORKDIR $APP_HOME
@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "./house_price.py","-p","Machine-Learning-Projects/Microservice/model.pickle"]
+CMD ["python3", "Machine-Learning-Projects/Microservice/house_price.py","-p","Machine-Learning-Projects/Microservice/model.pickle"]
